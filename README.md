@@ -5,3 +5,5 @@ Bash script implementing a MITM attack with Ettercap & image extraction from int
 Port forwarding setup within script. 
 
 Only tested on the Raspberry Pi "Rasbian" image. 
+
+dependencies : ettercap & driftnet
