@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "$(tput bold)$(tput setaf 1)MITM initialize & enable port forwarding & make directory for files$(tput sgr0)"
+echo "$(tput bold)$(tput setaf 1)MITM initialize / enable port forwarding & make directory for files$(tput sgr0)"
 sudo mkdir localImages
 gif=$(find /home/pi/localImages/ -type f -name "*.gif")
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning
@@ -14,4 +14,4 @@ then
         sudo rm /home/pi/localImages/*.gif
 fi
 done
-
+# end program
