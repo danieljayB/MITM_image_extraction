@@ -6,4 +6,4 @@ Port forwarding setup within script.
 
 Only tested on the Raspberry Pi "Rasbian" image. 
 
-dependencies : ettercap & driftnet
+dependencies : ettercap & driftnet. Stricly intended for personal research.
