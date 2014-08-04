@@ -1,6 +1,6 @@
 
 #!/bin/bash
-echo "$(tput bold)$(tput setaf 1)MITM initialize & enable port forwarding & make directory for files$(tput sgr0)"
+echo "$(tput bold)$(tput setaf 1)MITM initialize/enable port forwarding & make directory for files$(tput sgr0)"
 # create directory to save images on external HDD on Pi because
 # me no like SD card limitied write cycles :'(
 sudo mkdir /mnt/localImages
@@ -13,10 +13,10 @@ echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
 sudo driftnet -v -i eth0 -a -m 100 -d /mnt/localImages -x myImages & # save 100 images
 while :
 do
-if [[ ( -n $gif ) ]]
+if [[ ( -n $gif ) ]] # test to see if we are in directory with files in format of ".gif"
 then
         echo "$(tput bold)$(tput setaf 1)delete all gifs$(tput sgr0)"
-        sudo rm /mnt/localImages/*.gif
+        sudo rm /mnt/localImages/*.gif # remove all .gif files exceptions of .png & .jpg. nothing personal.
 fi
 done
 #end program
