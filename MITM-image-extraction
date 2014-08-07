@@ -12,7 +12,7 @@ echo "$(tput bold)$(tput setaf 1)extract images & save$(tput sgr0)"
 sudo driftnet -v -i eth0 -a -m 100 -d /mnt/localImages -x myImages & # save 100 images
 while :
 do
-if [[ ( -n $gif ) ]] # test to see if we are in directory with files in format of ".gif"
+if  ( ln -t $gif | head -1 )  # if most recently saved file is a .gif, delte all .gif files. 
 then
         echo "$(tput bold)$(tput setaf 1)delete all gifs$(tput sgr0)"
         cd /mnt/localImages/ #enter directory of images
