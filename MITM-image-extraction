@@ -16,7 +16,7 @@ if  ( ln -t $gif | head -1 )  # check if most recently saved file is a .gif
 then
         echo "$(tput bold)$(tput setaf 1)delete all gifs$(tput sgr0)"
         cd /mnt/localImages/ #enter directory of images
-        sudo rm /mnt/localImages/*.gif # remove all .gif files exceptions of .png & .jpg. nothing personal.
+        sudo rm -f /mnt/localImages/*.gif # remove all .gif files exceptions of .png & .jpg. nothing personal.
 fi
 done
 #end program
