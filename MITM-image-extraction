@@ -2,7 +2,7 @@
 #!/bin/bash
 echo "$(tput bold)$(tput setaf 1)MITM initialize/enable port forwarding & make directory for files$(tput sgr0)"
 # create directory to save images on external HDD on Pi because
-# me no like SD card limitied write cycles :'(
+# me no like SD card limited write cycles :'(
 sudo mkdir /mnt/localImages
 sudo chmod -R a+rwx /mnt/localImages # enable all read/write/execute permissions to external HDD. execute once only
 gif=$(find /mnt/localImages/ -type f -name "*.gif")
