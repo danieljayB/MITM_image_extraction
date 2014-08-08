@@ -14,4 +14,4 @@ Execute from the shell as ```. MITM-image-extraction.sh``` to prevent running sc
 
 <h2>Dependencies</h2>
 
-ettercap & driftnet. Stricly intended for personal research.
+ettercap & driftnet. Stricly intended for personal research. :grimacing:
