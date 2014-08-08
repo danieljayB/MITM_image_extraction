@@ -8,7 +8,7 @@ Port forwarding setup within script.
 
 <h2> foreword </h2>
 
-Tested on the Raspberry Pi "Rasbian" image. Due to the nature of this program continously writing new image files, I have formatted the code to write to an external HDD connected to the Raspberry Pi.  
+Tested on the Raspberry Pi "Rasbian" image. Due to the nature of this program continously writing new image files, I have formatted the code to write to an external HDD connected to the Raspberry Pi. This reduces the write cycles to the main SD card. 
 
 Execute from the script : ```. MITM-image-extraction.sh``` to prevent running script in the child shell.
 
